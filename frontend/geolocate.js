@@ -37,19 +37,32 @@ navigator.geolocation.watchPosition(
 );
 
 function checkProximity(lat, long) {
+    // pull list of currently triggered locations from localStorage
+    let triggered = JSON.parse(localStorage.getItem("triggeredLocations")) || {};
+    let locationStateChanged = false
+
     Object.entries(artifacts).forEach(([key, artifact]) => {
         const distance = haversine(lat, long, artifact.lat, artifact.long);
+        let isInRange = distance < ARTIFACT_GEO_PROXIMITY
+        let isCurrentlyTriggered = triggered[key];
+
         console.log(key, distance);
-        if (distance < ARTIFACT_GEO_PROXIMITY) {
-            if (!alreadyTriggered(key)) {
-                markTriggered(key);
-            }
-        } else {
-            if (alreadyTriggered(key)) {
+        if (isInRange && !isCurrentlyTriggered) {
+            triggered[key] = true;
+            markTriggered(key);
+            locationStateChanged = true;
+        } else if (!isInRange){
+            triggered[key] = false;
+            if (isCurrentlyTriggered) {
                 markUntriggered(key);
+                locationStateChanged = true;
             }
         }
     });
+
+    if (locationStateChanged) {
+        localStorage.setItem("triggeredLocations", JSON.stringify(triggered));
+    }
 }
 
 /**
@@ -86,10 +99,7 @@ function haversine(lat1, long1, lat2, long2) {
  * @param id id of the location to mark as actively being triggered
  */
 function markTriggered(id) {
-    let triggered = JSON.parse(localStorage.getItem("triggeredLocations")) || {};
-    triggered[id] = true;
-    localStorage.setItem("triggeredLocations", JSON.stringify(triggered));
-
+    console.log("SHOW, BITCH.")
     showArtifactCard(id);
 }
 
@@ -100,16 +110,7 @@ function markTriggered(id) {
  * @param id id of the location to mark as actively being triggered
  */
 function markUntriggered(id) {
-    let triggered = JSON.parse(localStorage.getItem("triggeredLocations")) || {};
-    triggered[id] = false;
-    localStorage.setItem("triggeredLocations", JSON.stringify(triggered));
-
     hideArtifactCard(id);
-}
-
-function alreadyTriggered(id) {
-    let triggered = JSON.parse(localStorage.getItem("triggeredLocations")) || {};
-    return triggered[id]
 }
 
 function showArtifactCard(id) {
