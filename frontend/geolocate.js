@@ -82,9 +82,9 @@ function haversine(lat1, long1, lat2, long2) {
  * @param id id of the location to mark as actively being triggered
  */
 function markTriggered(id) {
-    let visited = JSON.parse(localStorage.getItem("triggeredLocations")) || {};
-    visited[id] = true;
-    localStorage.setItem("triggeredLocations", JSON.stringify(visited));
+    let triggered = JSON.parse(localStorage.getItem("triggeredLocations")) || {};
+    triggered[id] = true;
+    localStorage.setItem("triggeredLocations", JSON.stringify(triggered));
 
     showArtifactCard(id);
 }
@@ -97,7 +97,7 @@ function markTriggered(id) {
  */
 function markUntriggered(id) {
     let triggered = JSON.parse(localStorage.getItem("triggeredLocations")) || {};
-    triggered[id] = true;
+    triggered[id] = false;
     localStorage.setItem("triggeredLocations", JSON.stringify(triggered));
 
     hideArtifactCard(id);
