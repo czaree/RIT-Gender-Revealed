@@ -40,10 +40,14 @@ function checkProximity(lat, long) {
     Object.entries(artifacts).forEach(([key, artifact]) => {
         const distance = haversine(lat, long, artifact.lat, artifact.long);
         console.log(key, distance);
-        if (distance < ARTIFACT_GEO_PROXIMITY && !alreadyTriggered(key)) {
-            markTriggered(key);
+        if (distance < ARTIFACT_GEO_PROXIMITY) {
+            if (!alreadyTriggered(key)) {
+                markTriggered(key);
+            }
         } else {
-            markUntriggered(key);
+            if (alreadyTriggered(key)) {
+                markUntriggered(key);
+            }
         }
     });
 }
