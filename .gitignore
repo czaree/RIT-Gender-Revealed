@@ -1,0 +1,16 @@
+# ignore files created by running terraform locally
+.terraform/
+terraform.tfstate
+*.tfstate.*
+.terraform.lock.hcl
+.tfvars
+terraform/*.zip
+# ignore tf file which overrides s3 backend for local mode
+backend_override.tf
+
+# ignore files creates by running unittest library for testing 
+*.pyc
+**/__pycache__/
+
+# ignore files created by vscode
+.vscode

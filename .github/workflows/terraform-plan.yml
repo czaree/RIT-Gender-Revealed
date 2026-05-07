@@ -1,0 +1,39 @@
+name: Terraform Init, Plan & Apply
+
+on:
+  workflow_dispatch:
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+    environment: aws-terraform-env
+
+    env:
+      TF_S3_BUCKET: ${{ secrets.TF_S3_BUCKET }}
+      TF_STATE_KEY: ${{ secrets.TF_STATE_KEY }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Load .env file
+        run: cat terraform/.env >> $GITHUB_ENV
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.9.8
+
+      - name: Terraform Init
+        working-directory: terraform
+        run: terraform init -backend-config="bucket=${TF_S3_BUCKET}" -backend-config="key=${TF_STATE_KEY}" -backend-config="region=${TF_REGION}"
+
+      - name: Terraform Plan
+        working-directory: terraform
+        run: terraform plan
+
+      - name: Terraform Appl
+        working-directory: terraform
+        run: terraform apply -auto-approve
