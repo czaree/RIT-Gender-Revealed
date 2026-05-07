@@ -6,6 +6,6 @@
 3. Then, fork this repo and add four items to the Github Secrets:
     - `TF_S3_BUCKET`: The name of the bucket created to store the .tfstate file in
     - `TF_STATE_KEY`: The name of the .tfstate file to be created (terraform.tfstate by default)
-    - `AWS_ACCESS_KEY`: The access key ID associated with your AWS account
+    - `AWS_ACCESS_KEY_ID`: The access key ID associated with your AWS account
     - `AWS_SECRET_ACCESS_KEY`: The secret access key associated with your AWS account
 4. Run the `Terraform Init, Plan, and Apply` Github Action workflow to launch the program
