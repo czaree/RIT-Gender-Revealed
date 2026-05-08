@@ -3,7 +3,7 @@
     <head>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
         <link href = "style.css" rel = "stylesheet">
-        <title>Home | RIT GenderRevealed</title>
+        <title>Oracle | RIT GenderRevealed</title>
     </head>
     <body>
         <!--site navbar-->
@@ -16,10 +16,10 @@
                 <div class = "collapse navbar-collapse" id = "navbarSupportedContent">
                     <ul class = "navbar-nav ms-auto me-3 mb-2 mb-lg-0">
                         <li class = "nav-item">
-                            <a class = "nav-link active" aria-current="page" href="index.html">Home</a>
+                            <a class = "nav-link" href="index.html">Home</a>
                         </li>
                         <li class = "nav-item">
-                            <a class = "nav-link" href="oracle.html">Campus Oracle</a>
+                            <a class = "nav-link active" aria-current="page" href="oracle.html">Campus Oracle</a>
                         </li>
                         <li class = "nav-item">
                             <a class = "nav-link" href="map.html">Artifact Map</a>
@@ -40,40 +40,24 @@
             </div>
         </nav>
         <!--page content-->
-        <div class = "container-fluid">
-        <div class = "row d-flex justify-content-center mt-5">
-            <div class = "col-12 col-md-8 d-flex justify-content-center">
-                <div class = "text-center mb-2">
-                    <div class = "col mb-5">
-                        <h1 class = "display-4 py-2">Welcome to RIT GenderRevealed!</h1>
-                        <h2><small class = "display-6 py-2">First, tell us more about where you are</small></h2>
+        <div class = "row d-flex justify-content-center">
+            <div class = "col col-md-8 d-flex justify-content-center">
+                <div class = "col text-center mb-2">
+                    <h1>RIT GenderRevealed</h1>
+                    <h2>Welcome</h2>
+                    <h2>Locations</h2>
+                    <hr>
+                    <div id = "artifactList">
+
                     </div>
-                    <div class = "row gx-5">
-                        <div class = "col-12 col-md-6">
-                            <div class = "mode-select-btn border position-relative my-3 px-4 py-2">
-                                <h4><small class = "text-body-primary">On Campus?</small></h4>
-                                <a class = "stretched-link text-reset text-decoration-none" href = "oracle.html">
-                                    <h3>Try the Campus Oracle</h3>
-                                </a>
-                                <img src="" class = "placeholder img-fluid" alt = "RIT GenderRevealed Oracle Mode icon">
-                                <p>Walking through RIT? Use Oracle mode to reveal artifacts hidden in plain sight as you pass them.</p>
-                            </div>
-                        </div>
-                        <div class = "col-12 col-md-6">
-                            <div class = "mode-select-btn border position-relative my-3 px-4 py-2">
-                                <h4><small class = "text-body-primary">Browsing From Afar?</small></h4>
-                                <a class = "stretched-link text-reset text-decoration-none" href = "map.html">
-                                    <h3>Explore the Full Map</h3>
-                                </a>
-                                <img src=""  class = "placeholder img-fluid" alt = "RIT GenderRevealed Map Mode icon">
-                                <p>Not on site? Browse the complete, interactive map to explore the full collection of gendered artifacts.</p>
-                            </div>
-                        </div>
+                    <div>
+                        <button onclick = "markTriggered(0)">Trigger Artifact 0</button>
+                        <button onclick = "markUntriggered(0)">Hide Artifact 0</button>
                     </div>
                 </div>
             </div>
         </div>
-        </div>
     </body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script src = "geolocate.js"></script>
 </html>

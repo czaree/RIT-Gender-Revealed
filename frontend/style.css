@@ -1,0 +1,27 @@
+body {
+    background-color: #252422;
+    color: #FFFCF2;
+    overflow-x: hidden;
+}
+
+.nav-item a {
+    transition: text-shadow 0.3s ease-in-out;
+}
+
+.nav-item a:hover {
+  text-shadow: 0 0 0.8rem #FFFCF2, 0 0 0.09rem #DAD6C9;
+}
+
+.mode-select-btn {
+    background-color: #252422;
+    border-color: #504d49 !important;
+    border-width: 1.5px !important;
+    border-radius: 1rem;
+    transition: 0.3s ease-in-out;
+}
+
+.mode-select-btn:hover {
+    background-color: #403D39;
+    border-color: #848078 !important;
+    box-shadow: 0 0 1rem #848078, 0 0 0.09rem #848078;
+}
