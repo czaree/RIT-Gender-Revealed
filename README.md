@@ -1,5 +1,7 @@
 # RITGenderRevealed
 
+View in [Github Pages](https://czaree.github.io/RIT-Gender-Revealed/setup) or directly on [Github](https://github.com/czaree/RIT-Gender-Revealed/) 
+
 ## Set-up Guide
 1. Before anything else, first create an S3 bucket to store the memory of the program (a .tfstatefile).
 2. If you don't already have access keys set up for an IAM user or the root user of your AWS account, [create a new access key through the AWS console.](http://docs.aws.amazon.com/keyspaces/latest/devguide/create.keypair.html)
