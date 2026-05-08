@@ -1,6 +1,6 @@
 # RITGenderRevealed
 
-View in [Github Pages](https://czaree.github.io/RIT-Gender-Revealed/setup) or directly on [Github](https://github.com/czaree/RIT-Gender-Revealed/) 
+View in [Github Pages](https://czaree.github.io/RIT-Gender-Revealed/about/setup.html) or directly on [Github](https://github.com/czaree/RIT-Gender-Revealed/) 
 
 ## Set-up Guide
 1. Before anything else, first create an S3 bucket to store the memory of the program (a .tfstatefile).
